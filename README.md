@@ -1,65 +1,56 @@
-# AES Steganography Tool
+# Image Steganography Tool
 
 ## Overview
-
-This project allows you to **encrypt** and **hide messages** inside images using **AES encryption** and **steganography**. You can also **decrypt** and **retrieve** hidden messages from images.
+This tool allows you to **encrypt and hide secret messages** inside PNG images using **AES encryption** and **steganography**. It also provides a way to **extract and decrypt** the hidden messages.
 
 ## Features
+- **AES Encryption (EAX Mode)** for secure message protection.
+- **Steganography (LSB Encoding)** to hide messages inside images.
+- **Automatic File Input**: Reads the message from `message.txt`.
+- **Extract & Decrypt Functionality**.
+- **Easy-to-Use CLI Interface**.
 
-- **AES Encryption**: Encrypts messages before hiding them in images.
-- **Steganography**: Conceals encrypted messages inside PNG images.
-- **Decryption Support**: Extracts and decrypts hidden messages from stego images.
-- **Secure & Simple**: Uses a user-provided AES key for encryption and decryption.
-
-## Requirements
-
-Make sure you have **Python 3** installed along with the following dependencies:
-
+## Installation
+Make sure you have Python and the required libraries installed:
 ```bash
 pip install pillow pycryptodome
 ```
 
 ## Usage
+### 1️⃣ Hide a Message in an Image
+- Place your **original image** as `original.png`.
+- Write your secret message inside `message.txt`.
+- Run the script:
+  ```bash
+  python encrypt.py
+  ```
+- The encrypted message will be stored inside `stego.png`.
+- The script will output an **AES key**—**SAVE IT** (you need it for decryption).
 
-### 1. Hide a Message in an Image
-
-Run the `encrypt.py` script:
-
-```bash
-python encrypt.py
-```
-
-Enter your **AES key** and the **message** you want to hide. The script will generate a `stego.png` file containing the encrypted message.
-
-### 2. Extract and Decrypt a Message from an Image
-
-Run the `decrypt.py` script:
-
-```bash
-python decrypt.py
-```
-
-Enter the **same AES key** you used for encryption. If the key is correct, the hidden message will be revealed.
+### 2️⃣ Extract and Reveal the Hidden Message
+- Run:
+  ```bash
+  python decrypt.py
+  ```
+- Enter the **AES Key** when prompted.
+- The script will decrypt and reveal the **original hidden message**.
 
 ## File Structure
-
 ```
-/AES-Steganography-Tool
-│── encrypt.py      # Script to encrypt and hide messages in images
-│── decrypt.py      # Script to extract and decrypt messages from images
-│── original.png    # Original image (before hiding message)
-│── stego.png       # Image containing hidden message
-│── README.md       # Project documentation
+/ImageStegoTool
+│── encrypt.py      # Script to hide messages in an image
+│── decrypt.py      # Script to extract hidden messages
+│── original.png    # Original image
+│── stego.png       # Image with the hidden message
+│── message.txt     # Text file containing the secret message
+│── README.md       # Documentation
 ```
 
 ## Notes
-
-- Ensure your AES key is **exactly 32 characters long**.
-- Only **PNG images** are supported.
-- If decryption fails, check that you're using the **correct key**.
+- Use a **high-resolution image** for longer messages.
+- If decryption fails, **ensure you enter the correct AES key**.
+- The script stops reading when it finds a `11111110` binary marker.
 
 ## License
+This project is open-source and free to use!
 
-This project is **open-source** and free to use!
-
-**Tested On Windows 10**
