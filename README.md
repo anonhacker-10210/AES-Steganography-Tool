@@ -44,7 +44,7 @@ Enter the **same AES key** you used for encryption. If the key is correct, the h
 ## File Structure
 
 ```
-/AES-Stego-Tool
+/AES-Steganography-Tool
 │── encrypt.py      # Script to encrypt and hide messages in images
 │── decrypt.py      # Script to extract and decrypt messages from images
 │── original.png    # Original image (before hiding message)
